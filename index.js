@@ -1,4 +1,4 @@
-const RECIPEPUPPY_SEARCH_URL = 'http://proxy-server.herokuapp.com/http://www.recipepuppy.com/api';
+const RECIPEPUPPY_SEARCH_URL = 'https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api';
 
 function requestResponse(searchTerm, callback) {
 	//send search request and accept response (JSON HERE)
