@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Recipe Search</title>
+	<link href="index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<main>
+		<h2>Search for recipes that feature<br>the ingredients you have on hand.</h2>
+		<div class="row">
+			<form class="search-form">
+				<input type="text" class="input" id="search-term" placeholder="What do you have on hand?">
+				<button type="submit" class="search-button">Search</button>
+			</form>
+		</div>
+		<div class="row">
+			<div><p class="no-results hidden">Oops, no recipes were found! Please try your search again.</p>
+			<div class="search-results column"></div>
+			<div class="shopping-list column hidden">
+				<p class="list-title">Shopping List</p>
+				<p class="list-instructions">Click on an ingredient to the left to add<br>it to your shopping list. Click the "x" to delete it.</p>
+				<div class="list-body ing-item" id="html-list"></div>
+				<span class="button-div">
+					<button type="submit" class="clear-all">Clear All</button>
+					<button type="submit" class="email-list">Email List</button>
+					<button type="submit" class="copy-list">Copy List</button>
+				</span>
+		</div>	
+	</main>	
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

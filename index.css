@@ -1,0 +1,64 @@
+* body {
+  	box-sizing: border-box;
+}
+
+.input {
+	width: 200px;
+}
+
+.column {
+	float: left;
+	width: 50%;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+@media (max-width: 600px) {
+	.column {
+		width: 100%;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.thumbnail {
+	text-align: left;
+}
+
+.search-results {
+	margin-top: 50px;
+}
+
+.shopping-list {
+	border-style: solid ;
+	border-width: 1px;
+	width: 400px;
+	margin-top: 75px;
+	padding-bottom: 15px;
+}
+
+.list-title {
+	font-size: 25px;
+	text-align: center;
+}
+
+.list-instructions {
+	font-size: 15px;
+	text-align: center;
+}
+
+.button-div {
+	margin-left: 25%;
+	margin-top: 90%;
+	margin-bottom: 10%;
+}
+
+.x-button {
+	border-style: none;
+}
