@@ -6,6 +6,10 @@
 	width: 200px;
 }
 
+button {
+	cursor: pointer;
+}
+
 .column {
 	float: left;
 	width: 50%;
@@ -33,6 +37,7 @@
 
 .search-results {
 	margin-top: 50px;
+	cursor: pointer;
 }
 
 .shopping-list {
@@ -41,6 +46,8 @@
 	width: 400px;
 	margin-top: 75px;
 	padding-bottom: 15px;
+	position: fixed;
+	margin-left: 500px;
 }
 
 .list-title {
