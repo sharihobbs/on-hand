@@ -14,8 +14,9 @@ function submitRequest() {
     event.preventDefault();
     const userInput = $(event.currentTarget).find('.input'); 
     const query = userInput.val();
-    sessionStorage['searchIng'] = query; 
+    localStorage['searchIng'] = query; 
     requestResponse(query, showRecipes);
+    $('.search-button').prop('disabled', true);
   });
 }
 
@@ -40,6 +41,7 @@ function showRecipes(data) {
 		}
 	$('.search-results').html(items);
 	$('.shopping-list').removeClass('hidden');
+	$('.search-button').prop('disabled', false);
 }
 
 function dedupeIng(originalArray) {
@@ -54,7 +56,7 @@ function dedupeIng(originalArray) {
 function retrieveSearchTerm() {
 	//get the search terms on reload
 	const searchInput = document.getElementById('search-term');
-	const userSearchInput = sessionStorage['searchIng'];
+	const userSearchInput = localStorage['searchIng'];
 	if (userSearchInput == null) {
 		searchInput.value = "";
 	}
@@ -74,7 +76,7 @@ function handleClick() {
 		const newIng = $(this).html(); 
 		shoppingList = addToList(shoppingList, newIng);
 		renderList(shoppingList);
-		sessionStorage['listContent'] = JSON.stringify(shoppingList);
+		localStorage['listContent'] = JSON.stringify(shoppingList);
 	});
 }
 
@@ -96,8 +98,8 @@ function addToList(list, item) {
 }
 
 function retrieveShoppingList() {
-	//retrieve list from sessionStorage and render, update global array
- 	const retrievedList = sessionStorage['listContent'];
+	//retrieve list from localStorage and render, update global array
+ 	const retrievedList = localStorage['listContent'];
  	console.log('retrievedList:', retrievedList);
  	shoppingList = JSON.parse(retrievedList);
  	renderList(shoppingList);
@@ -108,7 +110,7 @@ function deleteIngredient() {
 	$('.list-body').on('click', '.x-button', function(event) {
 		const deletedItem = $(this).parent().children('span').text(); 
 		shoppingList.splice(shoppingList.indexOf(deletedItem), 1); 
-		sessionStorage['listContent'] = JSON.stringify(shoppingList);
+		localStorage['listContent'] = JSON.stringify(shoppingList);
 		renderList(shoppingList);
 	});
 }
@@ -117,7 +119,7 @@ function clearAll() {
 	//clear shopping list of all items with button click 
 	$('.clear-all').click(function(event) {
 		shoppingList = [];
-		sessionStorage['listContent'] = JSON.stringify(shoppingList);
+		localStorage['listContent'] = JSON.stringify(shoppingList);
 		renderList(shoppingList);
 	});
 }
