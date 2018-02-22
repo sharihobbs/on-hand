@@ -5,7 +5,10 @@ function requestResponse(searchTerm, callback) {
 	const query = {
 	  i: searchTerm,
 	};
-	$.getJSON(RECIPEPUPPY_SEARCH_URL, query, callback);
+	const xyz = $.getJSON(RECIPEPUPPY_SEARCH_URL, query, callback);
+	xyz.fail(function() {
+		window.alert('Error. Please try your search again.');
+	});
 }
 
 function submitRequest() {
@@ -14,7 +17,7 @@ function submitRequest() {
     event.preventDefault();
     const userInput = $(event.currentTarget).find('.input'); 
     const query = userInput.val();
-    localStorage['searchIng'] = query; 
+    sessionStorage['searchIng'] = query; 
     requestResponse(query, showRecipes);
     $('.search-button').prop('disabled', true);
   });
@@ -56,7 +59,7 @@ function dedupeIng(originalArray) {
 function retrieveSearchTerm() {
 	//get the search terms on reload
 	const searchInput = document.getElementById('search-term');
-	const userSearchInput = localStorage['searchIng'];
+	const userSearchInput = sessionStorage['searchIng'];
 	if (userSearchInput == null) {
 		searchInput.value = "";
 	}
@@ -76,7 +79,7 @@ function handleClick() {
 		const newIng = $(this).html(); 
 		shoppingList = addToList(shoppingList, newIng);
 		renderList(shoppingList);
-		localStorage['listContent'] = JSON.stringify(shoppingList);
+		sessionStorage['listContent'] = JSON.stringify(shoppingList);
 	});
 }
 
@@ -98,10 +101,14 @@ function addToList(list, item) {
 }
 
 function retrieveShoppingList() {
-	//retrieve list from localStorage and render, update global array
- 	const retrievedList = localStorage['listContent'];
+	//retrieve list from sessionStorage and render, update global array
+ 	const retrievedList = sessionStorage['listContent'];
  	console.log('retrievedList:', retrievedList);
- 	shoppingList = JSON.parse(retrievedList);
+	if (retrievedList !== undefined) {
+		shoppingList = JSON.parse(retrievedList);
+	} else {
+		shoppingList = [];
+	}
  	renderList(shoppingList);
 }
 
@@ -110,7 +117,7 @@ function deleteIngredient() {
 	$('.list-body').on('click', '.x-button', function(event) {
 		const deletedItem = $(this).parent().children('span').text(); 
 		shoppingList.splice(shoppingList.indexOf(deletedItem), 1); 
-		localStorage['listContent'] = JSON.stringify(shoppingList);
+		sessionStorage['listContent'] = JSON.stringify(shoppingList);
 		renderList(shoppingList);
 	});
 }
@@ -119,7 +126,7 @@ function clearAll() {
 	//clear shopping list of all items with button click 
 	$('.clear-all').click(function(event) {
 		shoppingList = [];
-		localStorage['listContent'] = JSON.stringify(shoppingList);
+		sessionStorage['listContent'] = JSON.stringify(shoppingList);
 		renderList(shoppingList);
 	});
 }
