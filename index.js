@@ -85,7 +85,7 @@ function handleClick() {
 
 function renderList(list) {
 	//render list into HTML
-	const shoppingLis = list.map(item => `<li><span>${ item }</span>  <button class="x-button">&#9747;</button></li>`).join('');
+	const shoppingLis = list.map(item => `<li><span>${ item }</span>  <button class="x-button">&times;</button></li>`).join('');
 	const listDiv = $(`<div><ul> ${ shoppingLis } </ul></div>`);
 	$('.list-body').html(listDiv);	
 }
@@ -135,8 +135,8 @@ function emailList() {
 	//allow user to email list 
 	$('.email-list').click(function(event) {
 		const email = "";
-		const subject = "My Shopping List";
-		const emailBody = "Shop for these items: " + shoppingList.join(', '); 
+		const subject = "Your OnHand Shopping List";
+		const emailBody = "Please shop for these items: " + shoppingList.join(', ') + "."; 
 		document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
 	});
 }
@@ -144,7 +144,8 @@ function emailList() {
 function copyList() {
 	//copy list text to clipboard - NOT WORKING YET
 	$('.copy-list').on('click', function(event) {
-		copyToClipboard(shoppingList.join(', '));
+		const copyText = shoppingList.join(', ');
+		copyToClipboard("Please shop for these items: " + copyText + "."); 
 		window.alert("Your list has been copied to the clipboard.");
 		});
 }
