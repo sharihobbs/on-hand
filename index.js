@@ -1,18 +1,18 @@
 const RECIPEPUPPY_SEARCH_URL = 'https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api';
 
 function requestResponse(searchTerm, callback) {
-	//send search request and accept response (JSON HERE)
+	//send search request and accept response
 	const query = {
 	  i: searchTerm,
 	};
 	const xyz = $.getJSON(RECIPEPUPPY_SEARCH_URL, query, callback);
-	xyz.fail(function() {
-		window.alert('Error. Please try your search again.');
+	xyz.fail(function() { 
+		window.alert('Error. Please try your search again.'); 
 	});
 }
 
 function submitRequest() {
-	//accept and handle the search request params entered by the user
+	//accept and handle the search request params entered by the user, set up sessionStorage for search terms
   $('.search-form').submit(function(event) {
     event.preventDefault();
     const userInput = $(event.currentTarget).find('.input'); 
@@ -24,9 +24,9 @@ function submitRequest() {
 }
 
 function renderRecipes(recipe) {
-	//HTML for recipes with links and lists of on hand and additional ing (sep lists descoped)
+	//HTML for recipes with links and lists of ingredients, clickable for shopping list
 	const recIng = recipe.ingredients.split(',');
-	const listLis = dedupeIng(recIng).map(item => `<li class="ingItem">${ item }</li>`).join('');
+	const listLis = dedupeIng(recIng).map(item => `<li class="ingItem"><span>${ item }</span></li>`).join('');
 	const recipeDiv = $(`<div>
 		<a class="title" href="${recipe.href}">${recipe.title}</a></br>
 		<img class="thumbnail" src="${recipe.thumbnail}" width=100 alt="${recipe.title}"</>
@@ -74,8 +74,8 @@ function retrieveSearchTerm() {
 let shoppingList = [];
 
 function handleClick() {
-	//set up listener for click event on ingItem, format li for list
-	$('.search-results').on('click', '.ingItem', function(event) {
+	//set up listener for click event on span inside of ingItem, format li for list
+	$('.search-results').on('click', '.ingItem span', function(event) {
 		const newIng = $(this).html(); 
 		shoppingList = addToList(shoppingList, newIng);
 		renderList(shoppingList);
@@ -85,7 +85,7 @@ function handleClick() {
 
 function renderList(list) {
 	//render list into HTML
-	const shoppingLis = list.map(item => `<li><span>${ item }</span>  <button class="x-button">&times;</button></li>`).join('');
+	const shoppingLis = list.map(item => `<li role="Listitem"><span>${ item }</span>  <button class="x-button">&times;</button></li>`).join('');
 	const listDiv = $(`<div><ul> ${ shoppingLis } </ul></div>`);
 	$('.list-body').html(listDiv);	
 }
@@ -103,7 +103,6 @@ function addToList(list, item) {
 function retrieveShoppingList() {
 	//retrieve list from sessionStorage and render, update global array
  	const retrievedList = sessionStorage['listContent'];
- 	console.log('retrievedList:', retrievedList);
 	if (retrievedList !== undefined) {
 		shoppingList = JSON.parse(retrievedList);
 	} else {
@@ -113,7 +112,7 @@ function retrieveShoppingList() {
 }
 
 function deleteIngredient() {
-	//delete ing from list with "x" 
+	//delete ing from list on click of "x" button
 	$('.list-body').on('click', '.x-button', function(event) {
 		const deletedItem = $(this).parent().children('span').text(); 
 		shoppingList.splice(shoppingList.indexOf(deletedItem), 1); 
@@ -142,7 +141,7 @@ function emailList() {
 }
 
 function copyList() {
-	//copy list text to clipboard - NOT WORKING YET
+	//copy list text to clipboard 
 	$('.copy-list').on('click', function(event) {
 		const copyText = shoppingList.join(', ');
 		copyToClipboard("Please shop for these items: " + copyText + "."); 
@@ -151,11 +150,12 @@ function copyList() {
 }
 
 function copyToClipboard(text) {
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val(text).select();
-  document.execCommand("copy");
-  $temp.remove();
+	//copies text to clipboard for copyList function
+	var $temp = $("<input>");
+	$("body").append($temp);
+	$temp.val(text).select();
+	document.execCommand("copy");
+	$temp.remove();
 }
 
 $(submitRequest);
