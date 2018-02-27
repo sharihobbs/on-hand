@@ -4,7 +4,7 @@ OnHand is a recipe search tool for the cook looking to make something new with w
 
 ## Functionalities
 
-Shari - you still need this.
+Users may search using one or multiple ingredients to find recipes that include those ingredients. All ingredients used in the recipe are displayed and are clickable. Once clicked, they will be added to the shopping list displayed on screen. If an item is already on the list, an alert will display. Each item on the list may be deleted if the user changes their mind and the list may also be completely cleared. Buttons allowing the list to be copied or emailed (via the default email client) are also available on the shopping list. Search terms, search results, and the shopping list will be maintained throughout the user's session allowing them to perform multiple searches and browse to the recipe pages without losing any data. 
 
 ## Screenshots
 * Start Page
