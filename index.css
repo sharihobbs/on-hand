@@ -1,5 +1,5 @@
 * body {
-  	box-sizing: border-box;
+	box-sizing: border-box;
   	font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -9,24 +9,6 @@
 
 button {
 	cursor: pointer;
-}
-.main-div {
-	width: 100%;
-	height: 210px;
-	text-align: center;
-	background-color: #C4F5F3;
-	margin-top: -10px;
-	margin-left: -10px;
-	padding: 10px;
-}
-
-.main-text {
-	font-size: 22px;
-	font-weight: bolder;
-}
-
-.sub-text {
-	font-size: 18px;
 }
 
 .column {
@@ -47,6 +29,25 @@ button {
 	}
 }
 
+.main-div {
+	width: 100%;
+	height: 210px;
+	text-align: center;
+	background-color: #C4F5F3;
+	margin-top: -10px;
+	margin-left: -10px;
+	padding: 10px;
+}
+
+.main-text {
+	font-size: 22px;
+	font-weight: bolder;
+}
+
+.sub-text {
+	font-size: 18px;
+}
+
 .hidden {
 	display: none;
 }
@@ -58,6 +59,9 @@ button {
 
 .search-results {
 	margin-top: 25px;
+}
+
+.ingItem span {
 	cursor: pointer;
 }
 
