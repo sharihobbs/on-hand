@@ -5,38 +5,11 @@
 
 .input {
 	width: 200px;
+	margin-bottom: 25px;
 }
 
 button {
 	cursor: pointer;
-}
-
-.column {
-	float: left;
-	width: 50%;
-	padding-left: 10px;
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-@media (max-width: 600px) {
-	.column {
-		width: 100%;
-	}
-}
-
-.main-div {
-	width: 100%;
-	height: 210px;
-	text-align: center;
-	background-color: #C4F5F3;
-	margin-top: -10px;
-	margin-left: -10px;
-	padding: 10px;
 }
 
 .main-text {
@@ -52,32 +25,84 @@ button {
 	display: none;
 }
 
-.thumbnail {
-	text-align: left;
-	margin-top: 5px;
+.grid {
+ 	display: grid;
+ 	grid-template-columns: 1fr 1fr 1fr;
+  	grid-template-rows: auto 1fr 1fr;
+  	grid-template-areas: 
+  	"main-div main-div main-div"
+  	"recipes recipes recipes"
+  	"list-div list-div list-div";
+}
+/*responsive for mobile, desktop is below, test by moving size of window*/
+
+.main-div {
+  	grid-area: main-div;
+  	text-align: center;
+	background-color: #C4F5F3;
 }
 
-.search-results {
-	margin-top: 25px;
+.recipes {
+ 	grid-area: recipes;
+ 	margin-top: 15px;
+ 	float: left;
+ 	height: 250px;
+ 	width: 180px;
+ 	margin: 10px;
+ 	border-style: solid;
+ 	border-color: gainsboro;
+ 	border-width: 1px;
+ 	border-radius: 5px;
+ 	padding: 6px;
+ 	overflow: auto;
+}
+
+.list-body {
+	text-align: left;
+}
+
+.list-div {
+	grid-area: list-div;
+}
+
+.shopping-list {
+ 	border-style: solid;
+ 	border-color: gainsboro;
+	border-width: 1px;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 15px;
+	text-align: center;
+}
+
+.thumbnail {
+  	position: relative;
+  	width: 80px;
+  	height: 80px;
+  	overflow: hidden;
+  	margin-top: 10px;
+  	margin-left: 6px;
+}
+
+.thumbnail img {
+  	position: absolute;
+  	left: 50%;
+  	top: 50%;
+  	height: 100%;
+  	width: auto;
+  	-webkit-transform: translate(-50%,-50%);
+     	 -ms-transform: translate(-50%,-50%);
+          	transform: translate(-50%,-50%);
 }
 
 .ingItem span {
 	cursor: pointer;
 }
 
-.shopping-list {
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 5px;
-	width: 350px;
-	margin-top: 50px;
-	padding-bottom: 15px;
-}
-
 .list-title {
 	font-size: 25px;
 	text-align: center;
-	margin-bottom: -15px;
+	margin-bottom: -10px;
 }
 
 .list-instructions {
@@ -86,7 +111,6 @@ button {
 }
 
 .button-div {
-	margin-left: 25%;
 	margin-top: 90%;
 	margin-bottom: 10%;
 }
@@ -94,3 +118,17 @@ button {
 .x-button {
 	border-style: none;
 }
+
+@media screen and (min-width: 736px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto 400px;
+    grid-template-areas: 
+    "main-div main-div"
+    "recipes list-div";
+	}
+}
+/*desktop view, mobile is main setting*/
+
+
