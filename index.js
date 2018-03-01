@@ -6,15 +6,15 @@ function requestResponse(searchTerm, callback) {
 	  i: searchTerm,
 	};
 	const xyz = $.getJSON(RECIPEPUPPY_SEARCH_URL, query, callback);
-	xyz.fail(function() { 
-		window.alert('Error. Please try your search again.'); 
-	});
+	xyz.fail(function() { window.alert('Error. Please try your search again.')}) 
+	xyz.always(function() { $('.sk-circle').addClass('hidden'); });
 }
 
 function submitRequest() {
 	//accept and handle the search request params entered by the user, set up sessionStorage for search terms
   $('.search-form').submit(function(event) {
     event.preventDefault();
+    $('.sk-circle').removeClass('hidden');
     const userInput = $(event.currentTarget).find('.input'); 
     const query = userInput.val();
     sessionStorage['searchIng'] = query; 
@@ -27,10 +27,12 @@ function renderRecipes(recipe) {
 	//HTML for recipes with links and lists of ingredients, clickable for shopping list
 	const recIng = recipe.ingredients.split(',');
 	const listLis = dedupeIng(recIng).map(item => `<li class="ingItem"><span>${ item }</span></li>`).join('');
-	const recipeDiv = $(`<div>
-		<a class="title" href="${recipe.href}">${recipe.title}</a></br>
-		<img class="thumbnail" src="${recipe.thumbnail}" width=100 alt="${recipe.title}"</>
-		<ul>${ listLis }</ul></div`);
+	const recipeDiv = $(`
+		<div class="recipes">
+			<a class="title" href="${recipe.href}">${recipe.title}</a></br>
+			<img class="thumbnail" src="${recipe.thumbnail}" width=100 alt="${recipe.title}"</>
+			<ul>${ listLis }</ul>
+		</div>	`);
 	return recipeDiv;	
 }
 
@@ -38,13 +40,12 @@ function showRecipes(data) {
 	//display results from search as well as "unhide" list
 	const items = data.results.map((result, index) => renderRecipes(result));
 		if (!data.results.length) {
-			$('.no-results').removeClass('hidden');
+			window.alert('Oops, no recipes were found! Please try your search again.');
 		} else {
-			$('.no-results').addClass('hidden');
+			$('.search-results').html(items);
+			$('.shopping-list').removeClass('hidden');
+			$('.search-button').prop('disabled', false);
 		}
-	$('.search-results').html(items);
-	$('.shopping-list').removeClass('hidden');
-	$('.search-button').prop('disabled', false);
 }
 
 function dedupeIng(originalArray) {

@@ -2,36 +2,50 @@
 <html lang='en'>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
 	<title>OnHand Recipe Search</title>
 	<link href="index.css" rel="stylesheet" type="text/css" />
+	<link href="loading.css" rel="stylesheet" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
 	<main role="main">
-		<div class="main-div">
-			<p class="main-text">Search for recipes that feature<br>the ingredients you have on hand.</p>
-			<p class="sub-text">Enter your ingredients below (separated with commas, please)<br>and we'll show you what you can make. Easy as that!</p>
-			<form role="search" class="search-form" aria-live="assertive">
-				<input type="text" aria-label="search-text" class="input" id="search-term" placeholder="chicken, peppers, onions">
-				<button type="submit" class="search-button">Search</button>
-			</form>
-		</div>
-		<div class="row">
-			<div>
-				<p class="no-results hidden">Oops, no recipes were found! Please try your search again.</p>
+		<div class="grid">
+			<div class="main-div">
+				<p class="main-text">Search for recipes that feature the ingredients you have on hand.</p>
+				<p class="sub-text">Enter your ingredients below (separated with commas, please)<br>and we'll show you what you can make. Easy as that!</p>
+				<form role="search" class="search-form" aria-live="assertive">
+					<input type="text" aria-label="search-text" class="input" id="search-term" placeholder="chicken, peppers, onions">
+					<button type="submit" class="search-button">Search</button>
+				</form>
 			</div>
-			<div class="search-results column"></div>
-			<div class="shopping-list column hidden" aria-live="polite">
-				<p class="list-title">Shopping List</p>
-				<p class="list-instructions">Click on an ingredient to the left to add<br>it to your shopping list. Click the "x" to delete it.</p>
-				<div class="list-body ing-item" id="html-list"></div>
-				<span class="button-div">
-					<button type="submit" class="clear-all">Clear All</button>
-					<button type="submit" class="email-list">Email List</button>
-					<button type="submit" class="copy-list">Copy List</button>
-				</span>
+			<div class="sk-circle hidden">
+				<div class="sk-circle1 sk-child"></div>
+				<div class="sk-circle2 sk-child"></div>
+				<div class="sk-circle3 sk-child"></div>
+				<div class="sk-circle4 sk-child"></div>
+				<div class="sk-circle5 sk-child"></div>
+				<div class="sk-circle6 sk-child"></div>
+				<div class="sk-circle7 sk-child"></div>
+				<div class="sk-circle8 sk-child"></div>
+				<div class="sk-circle9 sk-child"></div>
+				<div class="sk-circle10 sk-child"></div>
+				<div class="sk-circle11 sk-child"></div>
+				<div class="sk-circle12 sk-child"></div>
 			</div>
+			<div class="search-results"></div>
+			<div class="list-div">
+				<div class="shopping-list hidden" aria-live="polite">
+					<h3 class="list-title">Shopping List</h3>
+					<p class="list-instructions">Click on an ingredient to the left to add it to your shopping list. Click the "x" to delete it.</p>
+					<div class="list-body ing-item" id="html-list"></div>
+					<span class="button-div">
+						<button type="submit" class="clear-all">Clear All</button>
+						<button type="submit" class="email-list">Email List</button>
+						<button type="submit" class="copy-list">Copy List</button>
+					</span>
+				</div>
+			</div>	
 		</div>	
 	</main>	
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
