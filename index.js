@@ -6,7 +6,7 @@ function requestResponse(searchTerm, callback) {
 	  i: searchTerm,
 	};
 	const xyz = $.getJSON(RECIPEPUPPY_SEARCH_URL, query, callback);
-	xyz.fail(function() { window.alert('Error. Please try your search again.')}) 
+	xyz.fail(function() { $('.error').removeClass('hidden'); }) 
 	xyz.always(function() { $('.sk-circle').addClass('hidden'); });
 }
 
@@ -15,8 +15,8 @@ function submitRequest() {
   $('.search-form').submit(function(event) {
     event.preventDefault();
     $('.sk-circle').removeClass('hidden');
-    const userInput = $(event.currentTarget).find('.input'); 
-    const query = userInput.val();
+    const query = $(event.currentTarget).find('.input').val(); 
+    //const query = userInput.val();
     sessionStorage['searchIng'] = query; 
     requestResponse(query, showRecipes);
     $('.search-button').prop('disabled', true);
@@ -31,21 +31,34 @@ function renderRecipes(recipe) {
 		<div class="recipes">
 			<a class="title" href="${recipe.href}">${recipe.title}</a></br>
 			<img class="thumbnail" src="${recipe.thumbnail}" width=100 alt="${recipe.title}"</>
-			<ul>${ listLis }</ul>
-		</div>	`);
+			<p class="ing-header">Ingredients:</p>
+			<ul>${ listLis }</ul>	
+		</div>`);
 	return recipeDiv;	
 }
+
+let successCount = 0;
 
 function showRecipes(data) {
 	//display results from search as well as "unhide" list
 	const items = data.results.map((result, index) => renderRecipes(result));
-		if (!data.results.length) {
-			window.alert('Oops, no recipes were found! Please try your search again.');
-		} else {
-			$('.search-results').html(items);
-			$('.shopping-list').removeClass('hidden');
-			$('.search-button').prop('disabled', false);
-		}
+	console.log('data.results:', data.results);
+	if (!data.results.length) {
+		$('.oops').removeClass('hidden');
+		$('.messages').removeClass('hidden');
+		$('.search-button').prop('disabled', false);
+		$('.search-results').html('');
+	} else {
+		$('.search-results').html(items);
+		$('.list-note').removeClass('hidden');
+		$('.shopping-list').removeClass('hidden');
+		$('.search-button').prop('disabled', false);
+		$('.messages').addClass('hidden');
+		successCount++;
+		if (successCount == 1 && requestTracker == false) {
+			swal("See an ingredient you don't have on-hand, no problem... with a click you can add it to your shopping list!");
+		}	
+	}
 }
 
 function dedupeIng(originalArray) {
@@ -56,6 +69,8 @@ function dedupeIng(originalArray) {
 	});
 	return newArray
 }
+
+let requestTracker = false;
 
 function retrieveSearchTerm() {
 	//get the search terms on reload
@@ -69,6 +84,7 @@ function retrieveSearchTerm() {
 	}
 	if (searchInput.value.length > 0) {
 		requestResponse(userSearchInput, showRecipes);
+		requestTracker = true; 
 	}
 }
 
@@ -96,7 +112,7 @@ function addToList(list, item) {
 	if (!list.includes(item)) {
 		list.push(item);
 	} else {
-		window.alert('This item is already on your list.');
+		swal("Hey now! This item is already on your list.");
 	};
 	return list; 
 }
@@ -146,7 +162,7 @@ function copyList() {
 	$('.copy-list').on('click', function(event) {
 		const copyText = shoppingList.join(', ');
 		copyToClipboard("Please shop for these items: " + copyText + "."); 
-		window.alert("Your list has been copied to the clipboard.");
+		swal("Your list has been copied to the clipboard. Paste away!");
 		});
 }
 
@@ -157,7 +173,7 @@ function copyToClipboard(text) {
 	$temp.val(text).select();
 	document.execCommand("copy");
 	$temp.remove();
-}
+} 
 
 $(submitRequest);
 $(retrieveSearchTerm);
