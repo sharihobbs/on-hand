@@ -1,113 +1,171 @@
 * body {
 	box-sizing: border-box;
-  	font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-.input {
-	width: 200px;
-	margin-bottom: 25px;
+body {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.6) 100%), url(https://user-images.githubusercontent.com/29738609/37105167-bb89be8c-21eb-11e8-904d-2ec71e47e5a1.jpg);
+}
+
+a {
+  color: #003366;
+}
+
+a:link {
+  text-decoration: none; 
+}
+
+ul { 
+  list-style: none;
+  padding: 2px;
+  margin: 3px;
 }
 
 button {
-	cursor: pointer;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "main-div main-div"
+    "recipes recipes"
+    "list-div list-div";
+}
+/*responsive for mobile, desktop is below, test by moving size of window*/
+
+.main-div {
+  grid-area: main-div;
+  background-color: #003366;
+  border-style: solid;
+  border-color: gainsboro;
+  border-width: 1px;
+  border-radius: 3px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.logo {
+  height: 200px;
+  margin: 5%;
+  display: inline-block;
+  float: left;
 }
 
 .main-text {
 	font-size: 22px;
 	font-weight: bolder;
+  color: white;
+  margin-top: 60px;
 }
 
 .sub-text {
 	font-size: 18px;
+  color: white;
+  margin-top: -10px;
 }
 
-.hidden {
-	display: none;
+.input {
+  width: 200px; 
+  margin-bottom: 25px;
 }
 
-.grid {
- 	display: grid;
- 	grid-template-columns: 1fr 1fr 1fr;
-  	grid-template-rows: auto 1fr 1fr;
-  	grid-template-areas: 
-  	"main-div main-div main-div"
-  	"recipes recipes recipes"
-  	"list-div list-div list-div";
+.messages {
+  color: #003366;
+  font-size: 32px;
+  text-align: center;
+  font-weight: bolder;
 }
-/*responsive for mobile, desktop is below, test by moving size of window*/
 
-.main-div {
-  	grid-area: main-div;
-  	text-align: center;
-	background-color: #C4F5F3;
+.recipe-div {
+  grid-area: recipe-div;
+  width: 100%;
 }
 
 .recipes {
- 	grid-area: recipes;
- 	margin-top: 15px;
- 	float: left;
- 	height: 250px;
- 	width: 180px;
- 	margin: 10px;
- 	border-style: solid;
- 	border-color: gainsboro;
- 	border-width: 1px;
- 	border-radius: 5px;
- 	padding: 6px;
- 	overflow: auto;
-}
-
-.list-body {
-	text-align: left;
-}
-
-.list-div {
-	grid-area: list-div;
-}
-
-.shopping-list {
- 	border-style: solid;
- 	border-color: gainsboro;
-	border-width: 1px;
-	border-radius: 5px;
-	margin-top: 15px;
-	padding: 15px;
-	text-align: center;
+  grid-area: recipes;
+  background-color: white;
+  color: #003366;
+  margin-top: 15px;
+  float: left;
+  width: 100%;
+  height: 250px;
+  margin: 10px;
+  padding: 6px;
+  border-style: solid;
+  border-color: gainsboro;
+  border-width: 1px;
+  border-radius: 3px;
+  overflow: auto;
+  box-shadow: 5px 5px 5px gainsboro;
 }
 
 .thumbnail {
-  	position: relative;
-  	width: 80px;
-  	height: 80px;
-  	overflow: hidden;
-  	margin-top: 10px;
-  	margin-left: 6px;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-left: 6px;
 }
 
-.thumbnail img {
-  	position: absolute;
-  	left: 50%;
-  	top: 50%;
-  	height: 100%;
-  	width: auto;
-  	-webkit-transform: translate(-50%,-50%);
-     	 -ms-transform: translate(-50%,-50%);
-          	transform: translate(-50%,-50%);
+.ing-header {
+  margin-bottom: -3px;
 }
 
 .ingItem span {
-	cursor: pointer;
+  cursor: pointer;
+}
+
+.list-div {
+  grid-area: list-div;
+  width: 100%;
+}
+
+.shopping-list {
+  border-style: solid;
+  border-color: gainsboro;
+  background-color: white; 
+  color: #003366;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  overflow: auto;
+  box-shadow: 5px 5px 5px gainsboro;
 }
 
 .list-title {
 	font-size: 25px;
 	text-align: center;
 	margin-bottom: -10px;
+  margin-top: 0px;
+  font-style: bolder;
+  color: #003366;
 }
 
 .list-instructions {
 	font-size: 15px;
 	text-align: center;
+  color: #003366;
+}
+
+.list-body {
+  text-align: left;
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.x-button {
+  border-style: none;
+  color: #003366;
 }
 
 .button-div {
@@ -115,20 +173,22 @@ button {
 	margin-bottom: 10%;
 }
 
-.x-button {
-	border-style: none;
+.button-text {
+  color: #003366;
 }
 
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 720px) {
   .grid {
     display: grid;
-    grid-template-columns: 70% 30%;
-    grid-template-rows: auto 400px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     grid-template-areas: 
-    "main-div main-div"
-    "recipes list-div";
-	}
+    "main-div main-div main-div"
+    "recipes recipes list-div";
+  }
+
+  .recipes {
+    width: 180px;
+  }
 }
 /*desktop view, mobile is main setting*/
-
-
