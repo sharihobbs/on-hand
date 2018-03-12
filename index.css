@@ -8,7 +8,7 @@ body {
 }
 
 a {
-  color: #003366;
+  color: #950000;
 }
 
 a:link {
@@ -29,72 +29,63 @@ button {
   display: none;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas: 
-    "main-div main-div"
-    "recipes recipes"
-    "list-div list-div";
-}
-/*responsive for mobile, desktop is below, test by moving size of window*/
-
 .main-div {
-  grid-area: main-div;
-  background-color: #003366;
-  border-style: solid;
-  border-color: gainsboro;
-  border-width: 1px;
-  border-radius: 3px;
-  padding-left: 20px;
-  padding-right: 20px;
+  background-color: #950000;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  margin: -20px; 
+  margin-bottom: 20px;
 }
 
 .logo {
-  height: 200px;
-  margin: 5%;
+  height: 150px;
   display: inline-block;
   float: left;
+  margin-top: 10px;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
 }
 
 .main-text {
 	font-size: 22px;
 	font-weight: bolder;
   color: white;
-  margin-top: 60px;
 }
 
 .sub-text {
 	font-size: 18px;
   color: white;
-  margin-top: -10px;
 }
 
 .input {
-  width: 200px; 
+  width: 225px; 
+  font-size: 16px;
   margin-bottom: 25px;
 }
 
+.search-button {
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+}
+
 .messages {
-  color: #003366;
+  color: #950000;
   font-size: 32px;
   text-align: center;
   font-weight: bolder;
 }
 
-.recipe-div {
-  grid-area: recipe-div;
-  width: 100%;
-}
-
 .recipes {
-  grid-area: recipes;
   background-color: white;
-  color: #003366;
+  color: #950000;
   margin-top: 15px;
   float: left;
-  width: 100%;
+  width: 180px;
   height: 250px;
   margin: 10px;
   padding: 6px;
@@ -121,18 +112,35 @@ button {
 
 .ingItem span {
   cursor: pointer;
+  color: black;
 }
 
-.list-div {
-  grid-area: list-div;
-  width: 100%;
+.glove {
+  height: 100px;
+  float: left;
+}
+
+.click-ing{
+  border-style: solid;
+  border-color: #950000;
+  background-color: #950000; 
+  float: left;
+  color: white;
+  font-weight: bolder;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  overflow: auto;
+  box-shadow: 5px 5px 5px gainsboro;
 }
 
 .shopping-list {
   border-style: solid;
   border-color: gainsboro;
   background-color: white; 
-  color: #003366;
+  color: black;
   border-width: 1px;
   border-radius: 5px;
   margin: 10px;
@@ -148,47 +156,26 @@ button {
 	margin-bottom: -10px;
   margin-top: 0px;
   font-style: bolder;
-  color: #003366;
+  color: #950000;
 }
 
 .list-instructions {
 	font-size: 15px;
 	text-align: center;
-  color: #003366;
+  color: black;
 }
 
 .list-body {
   text-align: left;
   margin-bottom: 15px;
-  color: #003366;
+  color: black;
 }
 
 .x-button {
   border-style: none;
-  color: #003366;
-}
-
-.button-div {
-	margin-top: 90%;
-	margin-bottom: 10%;
+  color: #950000;
 }
 
 .button-text {
-  color: #003366;
+  color: black;
 }
-
-@media screen and (min-width: 720px) {
-  .grid {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    "main-div main-div main-div"
-    "recipes recipes list-div";
-  }
-
-  .recipes {
-    width: 180px;
-  }
-}
-/*desktop view, mobile is main setting*/

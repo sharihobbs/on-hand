@@ -6,25 +6,26 @@
 	<title>OnHand Recipe Search</title>
 	<link href="index.css" rel="stylesheet" type="text/css" />
 	<link href="loading.css" rel="stylesheet" type="text/css" />
+	<link href="grid.css" rel="stylesheet" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
 	<main role="main">
-		<div class="grid">
+		<div>
 			<div class="main-div">
 				<img class="logo" src="https://user-images.githubusercontent.com/29738609/36992063-f415b408-2066-11e8-8502-f45296467585.png" alt="OnHand Logo">
 				<p class="main-text">Search for recipes that feature the ingredients you have on hand.</p>
 				<p class="sub-text">Enter your ingredients below (separated with commas, please)<br>and we'll show you what you can make. Easy as that!</p>
-				<form role="search" class="search-form" aria-live="assertive">
+				<form role="search" class="search-form" aria-live="polite">
 					<span>
-						<input type="text" aria-label="search-text" class="input" id="search-term" placeholder="chicken, peppers, onions">
+						<input type="text" aria-label="search-text" aria-required="true" class="input" id="search-term" placeholder="chicken, peppers, onions" required>
 						<button type="submit" class="search-button">Search</button>
 					</span>	
 				</form>
 			</div>
 			<div class="messages">
-				<p class="oops hidden">Oops, no recipes were found! Please try your search again.</p>
-				<p class="error hidden">Error. Please try your search again.</p>
+				<p class="oops hidden" aria-live="assertive">Oops, no recipes were found! Please try your search again.</p>
+				<p class="error hidden" aria-live="assertive">Error. Please try your search again.</p>
 			</div>
 			<div class="sk-circle hidden">
 				<div class="sk-circle1 sk-child"></div>
@@ -40,19 +41,25 @@
 				<div class="sk-circle11 sk-child"></div>
 				<div class="sk-circle12 sk-child"></div>
 			</div>
-			<div class="search-results"></div>
-			<div class="list-div">
-				<div class="shopping-list hidden" aria-live="polite">
-					<p class="list-title">Shopping List</p>
-					<p class="list-instructions">To remove an item from this list, just click the "x".</p>
-					<div class="list-body ing-item" id="html-list"></div>
-					<span class="button-div">
-						<button type="submit" class="button-text clear-all">Clear All</button>
-						<button type="submit" class="button-text email-list">Email List</button>
-						<button type="submit" class="button-text copy-list">Copy List</button>
-					</span>
-				</div>
-			</div>	
+			<div class="grid">
+				<div class="search-results"></div>
+				<div class="list-div">
+					<div class="click-ing">
+						<img class="glove" src="https://user-images.githubusercontent.com/29738609/37314275-6fc3f16a-2610-11e8-91c5-46b2691b99fb.png">
+						<p>See an ingredient you don't have on-hand? No problem... with a click you can add it to your shopping list!</p>
+					</div>
+					<div class="shopping-list hidden" aria-live="polite">
+						<p class="list-title">Shopping List</p>
+						<p class="list-instructions">To remove an item from this list, just click the "x".</p>
+						<div class="list-body ing-item" id="html-list"></div>
+						<div class="button-div">
+							<button type="submit" class="button-text clear-all">Clear All</button>
+							<button type="submit" class="button-text email-list">Email List</button>
+							<button type="submit" class="button-text copy-list">Copy List</button>
+						</div>
+					</div>
+				</div>	
+			</div>
 		</div>	
 	</main>	
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
