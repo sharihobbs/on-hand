@@ -1,0 +1,91 @@
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+/* Clearfix */
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+.row::after {
+  clear: both;
+}
+
+.col-3, .col-4, .col-6, .col-12 {
+  float: left;
+
+  /* Gutters:
+   * Each column is padded by half-a-gutter on each side,
+   *
+   * Half a gutter is 10px, 10/960 (context) = 1.041666%
+   *
+   */
+  padding-left: 1.04166666%;
+  padding-right: 1.04166666%;
+}
+
+/* Mobile defaults */
+.col-3, .col-4, .col-6, .col-12 {
+  width: 100%;
+}
+
+
+/* Non-mobile, grid */
+@media only screen and (min-width: 640px) {
+  /* 3 columns, 3/12 in % */
+  .col-3 {
+    width: 25%;
+  }
+
+  /* 4 columns */
+  .col-4 {
+    width: 33.33%;
+  }
+
+  /* 6 columns */
+  .col-6 {
+    width: 50%;
+  }
+
+  /* 12 columns */
+  .col-12 {
+    width: 100%;
+  }
+} 
+
+.grid {
+  display: grid;
+  float: left;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "recipes"
+    "list-div";
+}
+/*responsive for mobile, desktop is below, test by moving size of window*/
+
+@media screen and (min-width: 720px) {
+  .grid {
+    display: grid;
+    float: left;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "recipes list-div";
+   } 
+}
+/*desktop view, mobile is main setting*/
+
+.recipes {
+  grid-area: recipes;
+}
+
+.list-div {
+  grid-area: list-div;
+  width: 100%;
+}

@@ -26,10 +26,12 @@ function submitRequest() {
 function renderRecipes(recipe) {
 	//HTML for recipes with links and lists of ingredients, clickable for shopping list
 	const recIng = recipe.ingredients.split(',');
-	const listLis = dedupeIng(recIng).map(item => `<li class="ingItem"><span>${ item }</span></li>`).join('');
+	const listLis = dedupeIng(recIng).map((item, index) => {
+		return `<li class="ingItem"><span>${ item }</span></li>`
+	}).join('');
 	const recipeDiv = $(`
 		<div class="recipes">
-			<a class="title" href="${recipe.href}">${recipe.title}</a></br>
+			<a class="title" target="_blank" href="${recipe.href}">${recipe.title}</a></br>
 			<img class="thumbnail" src="${recipe.thumbnail}" width=100 alt="${recipe.title}"</>
 			<p class="ing-header">Ingredients:</p>
 			<ul>${ listLis }</ul>	
@@ -37,12 +39,24 @@ function renderRecipes(recipe) {
 	return recipeDiv;	
 }
 
-let successCount = 0;
-
 function showRecipes(data) {
 	//display results from search as well as "unhide" list
-	const items = data.results.map((result, index) => renderRecipes(result));
-	console.log('data.results:', data.results);
+	const originalArray = data.results; 
+		if (originalArray.length == 10) {
+			originalArray.pop(); 
+		}
+		console.log('originalArray:', originalArray);
+	const items = originalArray.map((result, index) => {
+	const openRow = $(`<div class="row">`);
+	const closeRow = $(`</div>`);
+		if ((index % 3) == 0) {
+			return $(renderRecipes(result)).prepend(openRow);
+		} else if ((index % 3) == 2) {
+			return $(renderRecipes(result)).append(closeRow);
+		} else {
+			return renderRecipes(result);	
+		}
+	});
 	if (!data.results.length) {
 		$('.oops').removeClass('hidden');
 		$('.messages').removeClass('hidden');
@@ -54,10 +68,7 @@ function showRecipes(data) {
 		$('.shopping-list').removeClass('hidden');
 		$('.search-button').prop('disabled', false);
 		$('.messages').addClass('hidden');
-		successCount++;
-		if (successCount == 1 && requestTracker == false) {
-			swal("See an ingredient you don't have on-hand, no problem... with a click you can add it to your shopping list!");
-		}	
+
 	}
 }
 
@@ -70,28 +81,26 @@ function dedupeIng(originalArray) {
 	return newArray
 }
 
-let requestTracker = false;
+let requestToggle = false;
 
 function retrieveSearchTerm() {
-	//get the search terms on reload
+	// get the search terms on reload
 	const searchInput = document.getElementById('search-term');
 	const userSearchInput = sessionStorage['searchIng'];
-	if (userSearchInput == null) {
-		searchInput.value = "";
-	}
-	else {
+	searchInput.value = ""
+	if (userSearchInput != null) {
 		searchInput.value = userSearchInput;
 	}
 	if (searchInput.value.length > 0) {
 		requestResponse(userSearchInput, showRecipes);
-		requestTracker = true; 
+		requestToggle = true; 
 	}
 }
 
 let shoppingList = [];
 
 function handleClick() {
-	//set up listener for click event on span inside of ingItem, format li for list
+	// set up listener for click event on span inside of ingItem, format li for list
 	$('.search-results').on('click', '.ingItem span', function(event) {
 		const newIng = $(this).html(); 
 		shoppingList = addToList(shoppingList, newIng);
