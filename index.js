@@ -65,6 +65,7 @@ function showRecipes(data) {
 	} else {
 		$('.search-results').html(items);
 		$('.list-note').removeClass('hidden');
+		$('.click-ing').removeClass('hidden');
 		$('.shopping-list').removeClass('hidden');
 		$('.search-button').prop('disabled', false);
 		$('.messages').addClass('hidden');
