@@ -97,6 +97,11 @@ button {
   box-shadow: 5px 5px 5px gainsboro;
 }
 
+.title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 .thumbnail {
   position: relative;
   width: 80px;
@@ -108,11 +113,12 @@ button {
 
 .ing-header {
   margin-bottom: -3px;
+  color: black;
+  font-size: 16px;
 }
 
 .ingItem span {
   cursor: pointer;
-  color: black;
 }
 
 .glove {
