@@ -112,7 +112,7 @@ function handleClick() {
 
 function renderList(list) {
 	//render list into HTML
-	const shoppingLis = list.map(item => `<li role="Listitem"><span>${ item }</span>  <button class="x-button">&times;</button></li>`).join('');
+	const shoppingLis = list.map(item => `<li role="Listitem"><span>${ item }</span>  <button class="x-button">&#9747;</button></li>`).join('');
 	const listDiv = $(`<div><ul> ${ shoppingLis } </ul></div>`);
 	$('.list-body').html(listDiv);	
 }
