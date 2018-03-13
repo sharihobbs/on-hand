@@ -8,28 +8,25 @@ A search may be performed using one or multiple ingredients to find recipes that
 
 ## Screenshots
 * Start Page
-<img width="1462" alt="opening page screen shot 2018-03-08 at 11 08 26 am" src="https://user-images.githubusercontent.com/29738609/37168355-d0bf96e2-22c1-11e8-8c86-215aa7fd7a93.png">
-
-* Notification of how to add to the shopping list (shows only after the user's first search)
-<img width="1466" alt="add item alert screen shot 2018-03-08 at 11 08 42 am" src="https://user-images.githubusercontent.com/29738609/37168542-710e3888-22c2-11e8-9f3e-9d7d602aeeaf.png">
+<img width="969" alt="Start Page" src="https://user-images.githubusercontent.com/29738609/37367038-80941100-26bf-11e8-87a2-bf860e75fd1e.png">
 
 * Search Results (with empty shopping list)
-<img width="1460" alt="search results empty list screen shot 2018-03-08 at 11 06 39 am" src="https://user-images.githubusercontent.com/29738609/37168374-e6101b8e-22c1-11e8-9da8-74dcbc82295b.png">
+<img width="951" alt="Search Results" src="https://user-images.githubusercontent.com/29738609/37367053-8d06b6c2-26bf-11e8-9031-e4aec637dba3.png">
 
 * Notification if search returns no recipes
-<img width="1460" alt="oops screen shot 2018-03-08 at 11 13 44 am" src="https://user-images.githubusercontent.com/29738609/37168491-509db5b0-22c2-11e8-80e1-7b7b63c894b9.png">
+<img width="964" alt="Notification" src="https://user-images.githubusercontent.com/29738609/37367077-a074ae4e-26bf-11e8-8d89-4d505568056d.png">
 
 * Search Results (with populated shopping list) 
-<img width="1465" alt="search with list screen shot 2018-03-08 at 11 07 26 am" src="https://user-images.githubusercontent.com/29738609/37168386-f54b0d3e-22c1-11e8-91c6-eed0397cf628.png">
+<img width="954" alt="Search Results with List" src="https://user-images.githubusercontent.com/29738609/37367091-b1afc4aa-26bf-11e8-95fc-7a9d1e7f9a96.png">
 
 * Recipe Page (opens in the same window after user clicks the title link)
-<img width="1453" alt="recipe page screen shot 2018-03-08 at 11 11 01 am" src="https://user-images.githubusercontent.com/29738609/37168398-00a1871c-22c2-11e8-9ccb-5b6e1bb69bec.png">
+<img width="967" alt="Recipe Page" src="https://user-images.githubusercontent.com/29738609/37367112-be2bd64c-26bf-11e8-9fc4-735b5b2da0df.png">
 
 * Email Page (populated with shopping list - opens after user clicks the Email List button)
-<img width="1222" alt="email screen shot 2018-03-08 at 11 10 12 am" src="https://user-images.githubusercontent.com/29738609/37168417-12986a8a-22c2-11e8-91a1-38a2c816cb02.png">
+<img width="1222" alt="Email Page" src="https://user-images.githubusercontent.com/29738609/37168417-12986a8a-22c2-11e8-91a1-38a2c816cb02.png">
 
 * Confirmation that list has been copied successfully
-<img width="1461" alt="copied alert screen shot 2018-03-08 at 11 07 48 am" src="https://user-images.githubusercontent.com/29738609/37168459-31bc4e2c-22c2-11e8-8b45-44a192625518.png">
+<img width="954" alt="Copy Confirmation" src="https://user-images.githubusercontent.com/29738609/37367127-c7a67c22-26bf-11e8-9ba7-d04719803d29.png">
 
 ## Built With
 
